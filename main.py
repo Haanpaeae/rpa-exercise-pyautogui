@@ -2,6 +2,7 @@ from drawing import draw_squares, mess_up_canvas
 from image_recognition import count_squares
 import pyautogui
 
+
 def main():
     # Open Paint
     pyautogui.hotkey('win', 'r')
@@ -33,7 +34,8 @@ def main():
     pyautogui.sleep(2)
 
    # Screenshot of the canvas after drawing the squares
-    canvas_image = pyautogui.screenshot(region=(canvas_x, canvas_y, canvas_width, canvas_height))
+    canvas_image = pyautogui.screenshot(
+        region=(canvas_x, canvas_y, canvas_width, canvas_height))
     canvas_image.save('canvas_before_mess.png')
 
     # Count squares
@@ -41,10 +43,11 @@ def main():
     if squares_counted == num_squares:
         print("The number of squares matches!")
     else:
-        print(f"Error: was expected {num_squares}, but was found {squares_counted}.")
+        print(
+            f"Error: was expected {num_squares}, but was found {squares_counted}.")
 
-    pyautogui.sleep(2) 
-    
+    pyautogui.sleep(2)
+
     mess_up_canvas(canvas_x, canvas_y, canvas_width, canvas_height)
 
     # Screenshot after messing up and recounting the squares
@@ -56,14 +59,13 @@ def main():
         print("Squares still found, messing up the canvas again...")
         mess_up_canvas(canvas_x, canvas_y, canvas_width, canvas_height)
         squares_counted_after = count_squares(canvas_region=canvas_region)
-        print(f"Squares counted after additional mess up: {squares_counted_after}")
+        print(
+            f"Squares counted after additional mess up: {squares_counted_after}")
 
     print("No more squares found. Closing Paint.")
     # Close Paint
     pyautogui.hotkey('alt', 'f4')
 
 
-
 if __name__ == "__main__":
     main()
-

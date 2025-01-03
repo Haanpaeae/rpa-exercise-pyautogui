@@ -1,5 +1,6 @@
 import random
 
+
 def get_random_position(canvas_x, canvas_y, canvas_width, canvas_height, square_size=50, margin=25):
     max_x = canvas_x + canvas_width - square_size - margin
     max_y = canvas_y + canvas_height - square_size - margin
@@ -8,6 +9,7 @@ def get_random_position(canvas_x, canvas_y, canvas_width, canvas_height, square_
     x = random.randint(min_x, max_x)
     y = random.randint(min_y, max_y)
     return (x, y)
+
 
 def is_overlapping(pos1, pos2, square_size=50):
     x1, y1 = pos1
